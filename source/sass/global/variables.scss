@@ -1,0 +1,26 @@
+// Color
+
+$background-base: #343539;
+$btn-background: #717174;
+$white-base: #ffffff;
+$red-base: #ef483e;
+$black-base: #000000;
+$grey-base: #cfcfcf;
+$grey-dark: #4b4b4f;
+
+// Fonts
+
+$basic-font: "Helvetica Neue", "Arial", sans-serif;
+
+// Viewports
+
+$tablet-width: 768px;
+$desktop-width: 1440px;
+$tablet: "(min-width: #{$tablet-width})";
+$desktop: "(min-width: #{$desktop-width})";
+
+// Other
+
+$arrow-size: 6px;
+$arrow-offset: 16px;
+$input-height: 44px;

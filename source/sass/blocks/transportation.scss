@@ -1,0 +1,379 @@
+$checkbox-size: 24px;
+
+.transportation {
+  padding: 40px 0 37px;
+}
+
+.transportation__inner {
+  @media #{$desktop} {
+    display: flex;
+    align-items: flex-start;
+  }
+}
+
+.transportation__form {
+  @media #{$desktop} {
+    flex-grow: 1;
+    margin-right: 16px;
+  }
+}
+
+.transportation__title {
+  margin: 0 0 22px;
+
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 40px;
+
+  @media #{$desktop} {
+    margin: 0 0 20px;
+
+    font-size: 56px;
+    line-height: 68px;
+  }
+}
+
+.transportation__list {
+  @include list-reset;
+
+  counter-reset: transpartationItem;
+}
+
+.transportation__item {
+  margin-bottom: 40px;
+
+  &:last-child {
+    margin-bottom: 16px;
+  }
+
+  &--transport {
+    @media #{$desktop} {
+      width: calc(50% - 8px);
+    }
+  }
+
+  &--cargo {
+    @media #{$desktop} {
+      width: calc(50% - 8px);
+    }
+  }
+}
+
+.transportation__item--time {
+  .transportation__label {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+  }
+
+  .transportation__input {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 0 4px;
+    padding: 10px 10px 10px 12px;
+
+    color: $grey-base;
+
+    background-color: $grey-dark;
+
+    &:last-of-type {
+      margin: 0;
+    }
+  }
+
+  .transportation__text {
+    position: relative;
+
+    display: inline-flex;
+    flex-grow: 1;
+    overflow: hidden;
+
+    white-space: nowrap;
+
+    &::before {
+      content: "";
+
+      flex-shrink: 0;
+      width: 16px;
+      height: 16px;
+      margin-right: 8px;
+
+      background-color: $grey-dark;
+      border-radius: 50%;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: calc(100% - 50px);
+
+      background-image: linear-gradient(
+        to left,
+        $grey-dark 20%,
+        rgba($white-base, 0)
+      );
+    }
+
+    &--active {
+      &::before {
+        box-shadow: inset 0 0 0 4px $red-base;
+      }
+    }
+
+    &--inactive {
+      &::before {
+        margin-right: 4px;
+
+        box-shadow: inset 0 0 0 4px $white-base;
+      }
+    }
+  }
+
+  .transportation__btn {
+    position: relative;
+
+    flex-shrink: 0;
+  }
+}
+
+.transportation__subtitle {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 0 0 16px;
+
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+
+  &::before {
+    content: counter(transpartationItem);
+
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 24px;
+    height: 24px;
+    margin-right: 8px;
+
+    font-weight: inherit;
+    font-size: 16px;
+    line-height: 20px;
+
+    background-color: $red-base;
+    border-radius: 50%;
+
+    counter-increment: transpartationItem;
+  }
+
+  @media #{$desktop} {
+    font-size: 24px;
+    line-height: 30px;
+  }
+}
+
+.transpartation__sublist {
+  @include list-reset;
+}
+
+.transpartation__sublist--columns {
+  $offset-column: 6px;
+
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -$offset-column;
+  margin-bottom: 16px;
+  margin-left: -$offset-column;
+
+  &:only-child {
+    margin-bottom: 0;
+  }
+
+  .transportation__field {
+    width: calc(50% - 2 * #{$offset-column});
+    margin-right: $offset-column;
+    margin-bottom: 0;
+    margin-left: $offset-column;
+
+    &--cargo-type {
+      @media #{$tablet} {
+        width: 100%;
+        margin-bottom: 16px;
+      }
+    }
+  }
+}
+
+.transpartation__sublist--temperatures {
+  display: none;
+  margin-top: 16px;
+}
+
+.transportation__field {
+  margin-top: 0;
+  margin-bottom: 16px;
+
+  &--danger-class {
+    display: none;
+
+    @media #{$tablet} {
+      display: block;
+    }
+  }
+}
+
+.transportation__label {
+  display: block;
+  margin: 0 0 8px;
+
+  font-size: 13px;
+  line-height: 16px;
+
+  &--checkbox {
+    position: relative;
+
+    display: inline-flex;
+    align-items: center;
+    margin: 0;
+
+    vertical-align: top;
+
+    cursor: pointer;
+
+    &::before {
+      content: "";
+
+      width: $checkbox-size;
+      height: $checkbox-size;
+      margin-right: 12px;
+
+      border: 2px solid white;
+    }
+  }
+}
+
+.transportation__input {
+  width: 100%;
+  min-height: $input-height;
+  padding: 13px 15px;
+
+  font-size: 15px;
+  line-height: 18px;
+  color: $black-base;
+
+  background-color: $white-base;
+  border: none;
+
+  &::placeholder {
+    color: $grey-base;
+  }
+
+  &--number {
+    appearance: textfield;
+
+    &::-webkit-inner-spin-button {
+      appearance: none;
+    }
+  }
+
+  &--temperature {
+    &::placeholder {
+      color: $black-base;
+    }
+  }
+
+  &--textarea {
+    min-height: 80px;
+
+    vertical-align: top;
+
+    resize: none;
+  }
+
+  &--select {
+    padding-right: $arrow-size + $arrow-offset;
+
+    &::-webkit-calendar-picker-indicator {
+      display: none;
+    }
+  }
+}
+
+.transportation__checkbox:checked + .transportation__label::before {
+  background-color: $red-base;
+  border: none;
+}
+
+.transportation__checkbox:focus-visible + .transportation__label::before {
+  outline: 2px solid $black-base;
+}
+
+.transportation__checkbox:checked + .transportation__label::after {
+  content: "";
+  position: absolute;
+  top: calc(50% - 2px);
+  left: $checkbox-size / 2;
+
+  width: 5px;
+  height: 10px;
+
+  border-right: 2px solid $white-base;
+  border-bottom: 2px solid $white-base;
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.transportation__checkbox:checked ~ .transpartation__sublist--temperatures {
+  display: flex;
+}
+
+.transportation__note {
+  margin-top: 3px;
+
+  color: $grey-base;
+}
+
+.transportation__btn {
+  padding: 4px 14px;
+
+  font-size: 13px;
+  line-height: 16px;
+  color: $white-base;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+
+  background-color: $btn-background;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+
+  &--inactive {
+    opacity: 0.3;
+  }
+}
+
+.transportation__comment {
+  margin: 0 0 40px;
+
+  .transportation__label {
+    margin-bottom: 9px;
+  }
+}
+
+.transportation__info {
+  margin: 0;
+  padding: 24px;
+
+  font-size: 15px;
+  line-height: 18px;
+
+  background-color: $grey-dark;
+  box-shadow: 0 10px 20px rgba($black-base, 0.1);
+
+  @media #{$desktop} {
+    max-width: 356px;
+  }
+}

@@ -1,0 +1,89 @@
+$arrow-size: 6px;
+
+.select {
+  position: relative;
+}
+
+.select__input-wrap {
+  position: relative;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+  }
+
+  &::before {
+    top: 0;
+    right: $arrow-size + $arrow-offset;
+
+    width: 45px;
+    height: 100%;
+
+    background-image: linear-gradient(
+      to left,
+      $white-base 50%,
+      rgba($white-base, 0)
+    );
+
+    pointer-events: none;
+  }
+
+  &::after {
+    top: 50%;
+    right: $arrow-offset;
+
+    width: $arrow-size;
+    height: $arrow-size;
+
+    border-bottom: 2px solid $black-base;
+    border-left: 2px solid $black-base;
+    transform: translateY(-50%) rotate(-45deg);
+  }
+
+  &--open {
+    &::after {
+      transform: translateY(-50%) rotate(135deg);
+    }
+  }
+}
+
+.select__input {
+  cursor: pointer;
+}
+
+.select__options {
+  @include list-reset;
+
+  position: absolute;
+  top: $input-height;
+  left: 0;
+  z-index: 10;
+
+  display: none;
+  width: 100%;
+
+  &--open {
+    display: block;
+  }
+}
+
+.select__btn {
+  display: block;
+  width: 100%;
+  padding: 5px 12px 6px;
+
+  font-size: 14px;
+  line-height: 17px;
+  text-align: left;
+
+  background-color: $white-base;
+  border: none;
+
+  &:hover {
+    color: $white-base;
+
+    background-color: $red-base;
+    cursor: pointer;
+  }
+}
