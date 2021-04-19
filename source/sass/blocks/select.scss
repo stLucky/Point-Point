@@ -56,9 +56,10 @@ $arrow-size: 6px;
   @include list-reset;
 
   position: absolute;
-  top: $input-height;
+  top: $input-height - 1px;
   left: 0;
   z-index: 10;
+  background-color: $white-base;
 
   display: none;
   width: 100%;

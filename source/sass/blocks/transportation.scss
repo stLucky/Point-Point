@@ -114,7 +114,7 @@ $checkbox-size: 24px;
       background-image: linear-gradient(
         to left,
         $grey-dark 20%,
-        rgba($white-base, 0)
+        rgba($grey-dark, 0)
       );
     }
 
@@ -267,6 +267,7 @@ $checkbox-size: 24px;
 
   background-color: $white-base;
   border: none;
+  border-radius: 0;
 
   &::placeholder {
     color: $grey-base;
@@ -298,6 +299,10 @@ $checkbox-size: 24px;
     padding-right: $arrow-size + $arrow-offset;
 
     &::-webkit-calendar-picker-indicator {
+      display: none;
+    }
+
+    &::-webkit-list-button {
       display: none;
     }
   }

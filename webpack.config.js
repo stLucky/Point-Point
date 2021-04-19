@@ -1,12 +1,10 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const CopyPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserPlugin = require("terser-webpack-plugin");
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
-const { webpack } = require('webpack');
 
 const isDev = process.argv.includes("development");
 const isProd = !isDev;
@@ -65,21 +63,12 @@ const getCssLoaders = (extra) => {
 const getPlugins = () => {
   const plugins = [
     new HtmlWebpackPlugin({
-      // filename: '../index.html',
       template: './index.html',
       minify: {
         collapseWhitespace: isProd,
       }
     }),
     new CleanWebpackPlugin(),
-    // new CopyPlugin({
-    //   patterns: [
-    //     {
-    //       from: path.resolve(__dirname, 'source/favicon.ico'),
-    //       to: path.resolve(__dirname, 'build')
-    //     }
-    //   ]
-    // }),
     new MiniCssExtractPlugin({
       filename: filename('css')
     }),
@@ -122,7 +111,10 @@ module.exports = {
       },
       {
         test: /\.(woff|woff2|ttf|eot)$/i,
-        use: ['file-loader']
+        loader: 'file-loader',
+        options: {
+          name: filename('[ext]')
+        }
       },
     ]
   }
