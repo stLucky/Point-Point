@@ -257,6 +257,8 @@ $checkbox-size: 24px;
 }
 
 .transportation__input {
+  -webkit-appearance: none;
+
   width: 100%;
   min-height: $input-height;
   padding: 13px 15px;
